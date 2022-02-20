@@ -1,1 +1,123 @@
+#password check
+
+
+def check_password(passwd):
+  SpecialSym = ["!","@","#","$","%","^","&","*"]
+  val = True
+  if len(passwd)<5:
+    print("Password length should be more than 5 ")
+    val = False
+  if len(passwd)>16:
+    print("Password length should not be greater than 8")
+    val = False
+  if not any(char.isdigit() for char in passwd):
+    print("Password should have atleast one numerical value")
+    val = False
+  if not any(char.isupper() for char in passwd):
+    print("Password should have atleast one uppercase letter")
+    val = False
+  if not any(char.islower() for char in passwd):
+    print("Password should have atleast one lowercase letter")
+    val = False
+  if not any(char in SpecialSym for char in passwd):
+    print("Password should have at least one of the symbols !@#$%^&*")
+    val = False
+  if val:
+    return val
+def main():
+  print("NOTE: Password must contain one digit, one lowercase character, one uppercase character and one special")
+  
+  passwd = input("Create the Password:")
+  if (check_password(passwd)):
+    print("Password is valid")
+  else:
+    print("Invalid Password")
+  #confirm password
+  ConfirmPassword = input("Enter the confirm Password:")
+  if passwd == ConfirmPassword:
+    print("Password is matched with confirm password")
+    db=open("login.txt", "a")
+    data = (UserName+ ", " +passwd+ "\n")
+    db.write(data)
+    
+    db.close()
+    db=open("login.txt", "r")
+    print(db.read())
+  elif passwd != ConfirmPassword:
+    print("Password is not matched with confirm password")
+    print("Re-Type the password")
+    
+  #main()
+  # E-mailId validation
+
+#print("email/username should have @ and followed by . there should not be any . immediate next to @ it should not start with special characters and numbers")
+import re
+
+def valid_email():
+  print("email/username should have @ and followed by . there should not be any . immediate next to @ it should not start with special characters and numbers")
+  regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+  email = input("Enter the E-mail Id:")
+  if re.search(rege]
+               print("Valid Email")
+  else:
+    print("Invalid Email")
+  #valid_email()
+
+
+#phone number validation
+def phoneNumber():
+  PhoneNumber = input("Enter the Phone Number:")
+  if len(PhoneNumber) == 10:
+    print("The Phone Number is :" , PhoneNumber )
+  else:
+    print("length of the phonenumber is too small")
+    print("Re-type the phone number")
+  #phoneNumber()
+
+    
+  #welcome to the page
+ss = 'False'
+User = input("Welcome to the page.\n If you are a New-user type Yes else No:")
+if User == "Yes":
+  UserName = input("Create the UserName:")
+  Name = UserName.capitalize()
+  print("The User name is:" , Name)
+  main()
+  valid_email()
+  phoneNumber()
+  print("Registration Successfull")
+
+User = input("Would you like to Login?type Yes or No:")
+if User == "No":
+    print("Access Denied!")
+    
+  
+if User == "Yes":
+    print("Login to your account for page Access")
+    user_name = input("please enter username:")
+    Pass_word = input("Please enter the Password:")
+    db=open("login.txt", "r")
+
+    for s in db:
+      a,b=s.split(",")
+      b=b.strip()
+      if(user_name==a and Pass_word==b):
+        print('login successful!!!')
+        ss='true'
+        exit()
+      if(user_name==a and Pass_word!=b):
+        print('password is wrong.')
+        l=input('would you like to click forgot password. enter y/n:')
+        if l=='y':
+          print('your password is ',b)
+          ss='true'
+  #break
+        else:
+          print('no forgot password is requested')
+          ss='true'
+  #break
+      if(ss=='false'):
+        print('credentials not found. kindly register')
+
+
 
